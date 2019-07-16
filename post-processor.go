@@ -87,6 +87,7 @@ func (p *PostProcessor) PostProcess(ui packer.Ui, artifact packer.Artifact) (pac
 			ui.Message(fmt.Sprintf("##teamcity[setParameter name='packer.artifact.%v.aws.ami' value='%v']", p.config.PackerBuildName, ami))
 		} else {
 			ui.Message(fmt.Sprintf("##teamcity[setParameter name='packer.artifact.%v.id' value='%v']", p.config.PackerBuildName, artifact.Id()))
+			ui.Message(fmt.Sprintf("##teamcity[setParameter name='packer.artifact.last.id' value='%v']", artifact.Id()))
 		}
 	}
 
